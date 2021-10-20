@@ -1,4 +1,5 @@
-export interface Controls {
-  readonly throttle: number;
-  readonly steering: number;
+export type MessageTypes = 'controls';
+
+export interface Message {
+  readonly type: MessageTypes;
 }
