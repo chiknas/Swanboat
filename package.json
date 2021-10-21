@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "start": "yarn compile && node dist/index.js",
-    "compile": "yarn tsc && yarn html",
+    "compile": "yarn tsc && yarn html && yarn webpack",
     "build": "yarn compile && yarn lint && yarn test",
     "test": "echo \"Error: no test specified\" && exit 0",
     "html": "copyfiles src/**/*.html src/**/*.css dist/static -u -f",
@@ -24,8 +24,11 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.4.1",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.3.0",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "express": "^4.17.1",
