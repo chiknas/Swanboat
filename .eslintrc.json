@@ -5,7 +5,10 @@
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": ["./tsconfig.json"] },
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "ignorePatterns": ["*.html", "*.css"],
   "plugins": ["@typescript-eslint"],
   "rules": {
     "quotes": [2, "single"],

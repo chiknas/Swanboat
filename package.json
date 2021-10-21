@@ -4,28 +4,31 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "dev": "yarn tsc && nodemon src/index.ts",
-    "start": "yarn tsc && node dist/index.js",
-    "build": "yarn tsc && yarn lint && yarn test",
+    "start": "yarn compile && node dist/index.js",
+    "compile": "yarn tsc && yarn html",
+    "build": "yarn compile && yarn lint && yarn test",
     "test": "echo \"Error: no test specified\" && exit 0",
+    "html": "copyfiles src/**/*.html src/**/*.css dist/static -u -f",
     "lint": "eslint src/**/* --quiet --fix"
   },
   "author": "chiknas",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^4.17.13",
     "@types/node": "^16.11.1",
     "@types/ws": "^8.2.0",
     "@typescript-eslint/eslint-plugin": "^5.1.0",
     "@typescript-eslint/parser": "^5.1.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "nodemon": "^2.0.14",
     "prettier": "^2.4.1",
     "ts-node": "^10.3.0",
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "ws": "^8.2.3"
   }
 }
