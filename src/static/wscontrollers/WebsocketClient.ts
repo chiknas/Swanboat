@@ -1,9 +1,9 @@
 // Create WebSocket connection.
-const socket = new WebSocket('ws://localhost:8080');
+export const socket = new WebSocket('ws://localhost:3000');
 
 // Connection opened
 socket.addEventListener('open', function () {
-  socket.send('Hello Server!');
+  socket.send('"Hello server"');
 });
 
 // Listen for messages

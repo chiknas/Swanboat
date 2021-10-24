@@ -35,7 +35,7 @@ export const setControllerState = (controller: Gamepad): Controls => {
   return {
     type: 'controls',
     throttle: buttons[PS4Buttons.R2].value * 100,
-    steering: axis[PS4Axis.LH] * 100,
+    steering: parseFloat(axis[PS4Axis.LH].toFixed(2)) * 100,
     turbo: buttons[PS4Buttons.X].pressed,
   };
 };

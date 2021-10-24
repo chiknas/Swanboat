@@ -1,5 +1,6 @@
 import { Controls } from 'inputhandlers/ControlsHandler/types';
 import { PS4 } from './gamepads/PS4';
+import { socket } from './wscontrollers/WebsocketClient';
 
 let gamepad: Gamepad;
 export let gamepadInputState: Controls = {
@@ -14,6 +15,7 @@ const updateStatus = (controller: Gamepad): void => {
   document.getElementById(
     'R2'
   ).innerHTML = `Gazi: ${gamepadInputState.throttle}%`;
+  socket.send(JSON.stringify(gamepadInputState));
 };
 
 const gameLoop = () => {
