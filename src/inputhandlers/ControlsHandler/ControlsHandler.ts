@@ -3,5 +3,5 @@ import { limitInputs } from './utils/ControlsParser';
 
 export const handleControls = (controls: Controls): void => {
   const limitedControls = limitInputs(controls);
-  console.log('controls: ' + limitedControls.steering);
+  process.stdout.write(JSON.stringify(limitedControls));
 };

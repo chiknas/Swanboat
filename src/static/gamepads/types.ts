@@ -1,8 +1,11 @@
-export type InputMap = {
-  [key: number]: string;
+import { Controls } from 'inputhandlers/ControlsHandler/types';
+
+export type InputMap<T> = {
+  [key: number]: T;
 };
 
-export type Controller = {
-  buttons: InputMap;
-  axis: InputMap;
-};
+export interface Controller<B, A> {
+  buttons: InputMap<B>;
+  axis: InputMap<A>;
+  setControls: (gamepad: Gamepad) => Controls;
+}
