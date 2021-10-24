@@ -4,16 +4,20 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/bundle.js"></script>
-    <link rel="stylesheet" href="/index.css" />
+    <script src="bundle.js"></script>
+    <link rel="stylesheet" href="index.css" />
     <title>Swanboat</title>
   </head>
   <body>
-    <h1 id="X">X: false</h1>
-    <h1 id="O">O: false</h1>
-    <h1 id="LH">LH: 0</h1>
-    <h1 id="LV">LV: 0</h1>
-    <h1 id="L2">Freno: 0</h1>
-    <h1 id="R2">Gazi: 0</h1>
+    <div class="hud">
+      <img
+        id="steering-wheel"
+        class="steering-wheel"
+        src="icons/steering-wheel.svg"
+      />
+      <img id="nitra" class="nitro-button" src="icons/nos.svg" />
+      <div id="throttle" class="controller-input"></div>
+      <div id="brake" class="controller-input"></div>
+    </div>
   </body>
 </html>

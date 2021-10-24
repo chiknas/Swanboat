@@ -5,10 +5,12 @@
   "main": "index.ts",
   "scripts": {
     "start": "yarn compile && node dist/index.js",
-    "compile": "yarn tsc && yarn html && yarn webpack",
+    "compile": "yarn tsc && yarn static && yarn webpack",
     "build": "yarn compile && yarn lint && yarn test",
     "test": "echo \"Error: no test specified\" && exit 0",
+    "static": "yarn html && yarn icons",
     "html": "copyfiles src/**/*.html src/**/*.css dist/static -u -f",
+    "icons": "copyfiles src/**/*.svg dist/static/icons -u -f",
     "lint": "eslint src/**/* --quiet --fix"
   },
   "author": "chiknas",

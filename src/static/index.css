@@ -1,3 +1,41 @@
 html {
-  background-color: rgb(236, 219, 199);
+  background-color: rgb(156, 97, 29);
+}
+
+body {
+  min-height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hud {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.controller-input {
+  border-color: black;
+  border: 0.2rem solid;
+  height: 10vh;
+  width: 20px;
+  margin: 0px 3px 0px 3px;
+  background: linear-gradient(to bottom, black 100%, white 100%);
+}
+
+.nitro-button {
+  width: 4rem;
+  height: 10vh;
+  color: red;
+}
+
+.steering-wheel {
+  width: 10vh;
+  height: 10vh;
 }
