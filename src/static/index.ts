@@ -1,4 +1,4 @@
-import { PS4 } from './controllers/PS4';
+import { PS4 } from './gamepads/PS4';
 
 let gamepad: Gamepad;
 
