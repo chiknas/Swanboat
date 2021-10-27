@@ -4,6 +4,7 @@ import { Message } from './types';
 import { Controls } from './inputhandlers/ControlsHandler/types';
 import express from 'express';
 import path from 'path';
+import { getBoatStatus } from './outputhandlers/boatstatus/BoatStatus';
 
 // Websocket for the main communication channel
 const wss = new WebSocketServer({ port: 3000 });
@@ -22,14 +23,20 @@ wss.on('connection', (ws) => {
       handleMessage(message);
     } catch (e) {
       console.log(e);
-      ws.send('What are you saying??');
     }
   });
 
-  ws.send('I see you!');
+  // init stream to the client
+  const initOutputStream = () => {
+    setTimeout(() => {
+      ws.send(JSON.stringify(getBoatStatus()));
+      initOutputStream();
+    }, 1000);
+  }
+  initOutputStream();
 });
 
-// http server to serve the main page
+// http server to serve the main page + the video stream
 const serverPort = 80;
 const app = express();
 app.use(express.static(path.join(__dirname, '../dist/static')));
