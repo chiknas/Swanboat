@@ -2,6 +2,9 @@
 # Update RPI
 apt-get update && apt-get upgrade -y
 
+# Enable rpi camera
+sudo raspi-config nonint do_camera 0
+
 #Install git
 apt-get install -y git
 

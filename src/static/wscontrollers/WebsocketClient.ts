@@ -1,5 +1,7 @@
 // Create WebSocket connection.
-export const socket = new WebSocket('ws://localhost:3000');
+const port = 3000
+const hostname = window.location?.hostname ?? '127.0.0.1';
+export const socket = new WebSocket(`ws://${hostname}:${port}`);
 
 // Connection opened
 socket.addEventListener('open', function () {

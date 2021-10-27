@@ -33,7 +33,6 @@ const gameLoop = () => {
 setInterval(gameLoop, 500);
 
 window.addEventListener('gamepadconnected', (e: GamepadEvent) => {
-  console.log('nikolas');
   if (!gamepad) {
     gamepad = e.gamepad;
   }

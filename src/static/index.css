@@ -1,5 +1,6 @@
 html {
   background-color: rgb(156, 97, 29);
+  overflow: hidden;
 }
 
 body {
@@ -16,8 +17,8 @@ body {
   display: flex;
   flex-direction: row;
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 5vh;
+  right: 5vw;
 }
 
 .controller-input {
