@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "raspberry-pi-camera-native": "^0.0.0",
     "ws": "^8.2.3"
   }
 }

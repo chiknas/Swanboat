@@ -37,6 +37,15 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/static/index.html'));
 });
 
+const videoStream = require('./videostream/VideoStream');
+videoStream.acceptConnections(app, {
+  width: 1280,
+  height: 720,
+  fps: 16,
+  encoding: 'JPEG',
+  quality: 7 //lower is faster
+}, '/stream.mjpg', false);
+
 app.listen(serverPort, () =>
   console.log(`Http server started on port ${serverPort}`)
 );

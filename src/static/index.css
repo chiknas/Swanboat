@@ -1,6 +1,8 @@
 html {
   background-color: rgb(156, 97, 29);
   overflow: hidden;
+  background: url('/stream.mjpg');
+  background-size: 100vw 100vh;
 }
 
 body {
@@ -17,7 +19,7 @@ body {
   display: flex;
   flex-direction: row;
   position: absolute;
-  bottom: 5vh;
+  bottom: 1vh;
   right: 5vw;
 }
 
