@@ -1,4 +1,4 @@
-import { Controls } from 'inputhandlers/ControlsHandler/types';
+import { Controls } from '../../socketapi/inputhandlers/ControlsHandler/types';
 import { Controller } from './types';
 
 export enum PS4Buttons {

@@ -1,4 +1,4 @@
-import { Controls } from 'inputhandlers/ControlsHandler/types';
+import { Controls } from '../socketapi/inputhandlers/ControlsHandler/types';
 import { PS4 } from './gamepads/PS4';
 import { renderControls } from './ui/RenderControls';
 import { socket } from './wscontrollers/WebsocketClient';

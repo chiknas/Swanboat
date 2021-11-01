@@ -1,4 +1,4 @@
-import { Message } from '../../types';
+import { Message } from '../../../types';
 
 export class Controls implements Message {
   readonly type: 'controls';

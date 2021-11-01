@@ -1,4 +1,4 @@
-import { Controls } from 'inputhandlers/ControlsHandler/types';
+import { Controls } from '../../socketapi/inputhandlers/ControlsHandler/types';
 
 export type InputMap<T> = {
   [key: number]: T;

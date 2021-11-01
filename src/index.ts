@@ -1,21 +1,15 @@
-import { handleControls } from './inputhandlers/ControlsHandler/ControlsHandler';
+import { handleMessage } from './socketapi/inputhandlers/InputHandler';
 import { WebSocketServer } from 'ws';
 import { Message } from './types';
-import { Controls } from './inputhandlers/ControlsHandler/types';
 import express from 'express';
 import path from 'path';
-import { getBoatStatus } from './outputhandlers/boatstatus/BoatStatus';
+import { VideoStream } from './services/videostream/VideoStream';
+import { outputHandlers } from './socketapi/outputhandlers/OutputHandler';
+import { networkInterfaces } from 'os';
 
 // Websocket for the main communication channel
 const wss = new WebSocketServer({ port: 3000 });
 wss.on('connection', (ws) => {
-  const handleMessage = (message: Message): void => {
-    switch (message.type) {
-      case 'controls':
-        handleControls(message as Controls);
-        break;
-    }
-  };
 
   ws.on('message', (data) => {
     try {
@@ -28,10 +22,13 @@ wss.on('connection', (ws) => {
 
   // init stream to the client
   const initOutputStream = () => {
-    setTimeout(() => {
-      ws.send(JSON.stringify(getBoatStatus()));
-      initOutputStream();
-    }, 1000);
+    outputHandlers.forEach(output => {
+      setTimeout(() => {
+        ws.send(JSON.stringify(output.callback()));
+        output.callback();
+      }, output.interval);
+    });
+    
   }
   initOutputStream();
 });
@@ -44,8 +41,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/static/index.html'));
 });
 
-const videoStream = require('./videostream/VideoStream');
-videoStream.acceptConnections(app, {
+VideoStream.acceptConnections(app, {
   width: 1280,
   height: 720,
   fps: 16,
@@ -53,6 +49,10 @@ videoStream.acceptConnections(app, {
   quality: 7 //lower is faster
 }, '/stream.mjpg', false);
 
-app.listen(serverPort, () =>
-  console.log(`Http server started on port ${serverPort}`)
-);
+const clientIp = Object.values(networkInterfaces())
+        .flat()
+        .filter((item) => !item.internal && item.family === "IPv4")
+        .find(Boolean).address;
+app.listen(serverPort, () => {
+  console.log(`Http server started on http://${clientIp}:${serverPort}`);
+});

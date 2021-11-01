@@ -1,13 +1,7 @@
 // code used from https://github.com/caseymcj/raspberrypi_node_camera_web_streamer/blob/master/videoStream.js
-// TODO: add types and share with the world https://github.com/DefinitelyTyped/DefinitelyTyped
-let lastFrameObj = {
-  lastFrame: null
-};
+import { Stream } from './types';
 
-let videoStream = {
-  getLastFrame: () => {
-      return lastFrameObj.lastFrame;
-  },
+export const VideoStream: Stream = {
   acceptConnections: function(expressApp, cameraOptions, resourcePath, isVerbose){
       const raspberryPiCamera = require('raspberry-pi-camera-native');
 
@@ -46,7 +40,7 @@ let videoStream = {
       
           let isReady = true;
       
-          let frameHandler = (frameData) => {
+          let frameHandler = (frameData: Buffer) => {
               try{
                   if(!isReady){
                       return;
@@ -56,8 +50,6 @@ let videoStream = {
       
                   if(isVerbose)
                       console.log('Writing frame: '+frameData.length);
-
-                  lastFrameObj.lastFrame = frameData;
 
                   res.write(`--myboundary\nContent-Type: image/jpg\nContent-length: ${frameData.length}\n\n`);
                   res.write(frameData, function(){
@@ -83,5 +75,3 @@ let videoStream = {
       });
   }
 }
-
-module.exports = videoStream;

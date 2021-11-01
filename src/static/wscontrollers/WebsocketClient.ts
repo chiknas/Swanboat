@@ -1,4 +1,4 @@
-import { BoatStatus } from "outputhandlers/boatstatus/types";
+import { BoatStatus } from "../../socketapi/outputhandlers/boatstatus/types";
 import { renderStatus } from "../ui/RenderStatus";
 import { Message } from "types";
 

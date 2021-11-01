@@ -1,4 +1,4 @@
-import { BoatStatus } from "outputhandlers/boatstatus/types";
+import { BoatStatus } from "../../socketapi/outputhandlers/boatstatus/types";
 
 export const renderStatus = (boatStatus: BoatStatus) => {
   const chassisTemp = document.getElementById('chassis-temp');

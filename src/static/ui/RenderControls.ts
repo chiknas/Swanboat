@@ -1,4 +1,4 @@
-import { Controls } from 'inputhandlers/ControlsHandler/types';
+import { Controls } from '../../socketapi/inputhandlers/ControlsHandler/types';
 
 export const renderControls = (controls: Controls): void => {
   document.getElementById(

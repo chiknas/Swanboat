@@ -1,4 +1,4 @@
-import { Message } from "types";
+import { Message } from "../../../types";
 
 export class BoatStatus implements Message {
   readonly type: 'boatstatus' = 'boatstatus';
